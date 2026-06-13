@@ -23,11 +23,11 @@ public class QuadraticProbingHashTable<AnyType>
 
         array[ currentPos ] = new HashEntry<>( x, true );
         theSize++;
-        
-            // Rehash; 
+
+            // Rehash;
         if( ++occupied > array.length / 2 )
             rehash( );
-        
+
         return true;
     }
 
@@ -51,13 +51,13 @@ public class QuadraticProbingHashTable<AnyType>
 
     /**
      * Method that performs quadratic probing resolution.
-     
+
      */
     private int findPos( AnyType x )
     {
         int offset = 1;
         int currentPos = myhash( x );
-        
+
         while( array[ currentPos ] != null &&
                 !array[ currentPos ].element.equals( x ) )
         {
@@ -67,7 +67,7 @@ public class QuadraticProbingHashTable<AnyType>
                 currentPos -= array.length;
             }
         }
-        
+
         return currentPos;
     }
 
@@ -87,7 +87,7 @@ public class QuadraticProbingHashTable<AnyType>
         else
             return false;
     }
-    
+
     /**
      * Get current size.
      * @return the size.
@@ -96,7 +96,7 @@ public class QuadraticProbingHashTable<AnyType>
     {
         return theSize;
     }
-    
+
     /**
      * Get length of internal table.
      * @return the size.
@@ -137,7 +137,7 @@ public class QuadraticProbingHashTable<AnyType>
         for( int i = 0; i < array.length; i++ )
             array[ i ] = null;
     }
-    
+
     private int myhash( AnyType x )
     {
         int hashVal = x.hashCode( );
@@ -148,7 +148,7 @@ public class QuadraticProbingHashTable<AnyType>
 
         return hashVal;
     }
-    
+
     private static class HashEntry<AnyType>
     {
         public AnyType  element;   // the element

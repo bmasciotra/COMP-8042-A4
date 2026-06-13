@@ -2,15 +2,15 @@ package com.assignment4.EightPuzzle;
 
 public class BinaryHeap<T extends Comparable<? super T>>
 {
-    private static class UnderflowException extends Exception{
+    static class UnderflowException extends Exception{
         public UnderflowException(){
             super("Underflow Exception");
         }
     }
 
     private static final int DEFAULT_CAPACITY = 1000;
-    private int currentSize;      
-    private T [ ] array; 
+    private int currentSize;
+    private T [ ] array;
 
     /**
      * Construct the binary heap.
@@ -25,7 +25,7 @@ public class BinaryHeap<T extends Comparable<? super T>>
         currentSize = 0;
         array = (T[]) new Comparable[ capacity + 1 ];
     }
-    
+
     public BinaryHeap( T [ ] items )
     {
             currentSize = items.length;
@@ -63,18 +63,18 @@ public class BinaryHeap<T extends Comparable<? super T>>
         array[index1] = array[index2];
         array[index2] = temp;
     }
-    
+
     private void enlargeArray( int newSize )
     {
             T [] old = array;
             array = (T []) new Comparable[ newSize ];
             for( int i = 0; i < old.length; i++ ){
-                array[ i ] = old[ i ];        
+                array[ i ] = old[ i ];
             }
     }
 
 
-    
+
     public T getMin( ) throws UnderflowException
     {
         if( isEmpty( ) )
@@ -139,7 +139,7 @@ public class BinaryHeap<T extends Comparable<? super T>>
 
     /**
      * Internal method to percolate down in the heap.
-     * @param hole the index at which the percolate begins.
+     * @param holeIndex the index at which the percolate begins.
      */
     private void percolateDown( int holeIndex )
     {
@@ -150,7 +150,7 @@ public class BinaryHeap<T extends Comparable<? super T>>
         for( ; holeIndex * 2 <= currentSize; holeIndex = leftChildIndex )
         {
             leftChildIndex = getLeftChildIndex(holeIndex);
-            rightChildIndex = getRightChildIndex(holeIndex); 
+            rightChildIndex = getRightChildIndex(holeIndex);
 
             if( leftChildIndex != currentSize && array[ rightChildIndex ].compareTo( array[ leftChildIndex ] ) < 0 ){
                 leftChildIndex++;

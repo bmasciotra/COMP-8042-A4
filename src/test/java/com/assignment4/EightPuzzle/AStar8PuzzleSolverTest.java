@@ -34,7 +34,7 @@ public class AStar8PuzzleSolverTest {
     }
 
     @Test
-    public void testSolutionFound() {
+    public void testSolutionFound() throws BinaryHeap.UnderflowException {
         solver.solve();
         Iterable<GameBoard> solution = solver.solution();
         assertEquals(AStar8PuzzleSolver.solvedStatus.SOLVED, solver.status());
@@ -46,7 +46,7 @@ public class AStar8PuzzleSolverTest {
     }
 
     @Test
-    public void testNoSolution() {
+    public void testNoSolution() throws BinaryHeap.UnderflowException {
         initialBoard = new GameBoard(new int[][] {
             {1, 2, 3},
             {4, 5, 6},
