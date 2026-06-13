@@ -2,7 +2,12 @@ package com.assignment4.EightPuzzle;
 
 import java.util.*;
 
-public class GameBoard implements Comparable<GameBoard>{ 
+public class GameBoard implements Comparable<GameBoard>{
+
+    @Override
+    public int compareTo(GameBoard o) {
+        return 0;
+    }
 
     private static class Coordinate{
         private final int row;
@@ -13,7 +18,7 @@ public class GameBoard implements Comparable<GameBoard>{
             this.col = col;
         }
     }
-    
+
     private final int[][] tiles;
     private final int dimension;
     //Useful to access the empty square in constant time
@@ -23,7 +28,7 @@ public class GameBoard implements Comparable<GameBoard>{
         //Assume 0 denotes the empty square
         this.tiles = tiles;
         this.dimension = tiles.length;
-    
+
         for(int i = 0; i < dimension; i++){
             for(int j = 0; j < dimension; j++){
                 if(tiles[i][j] == 0){
@@ -46,7 +51,7 @@ public class GameBoard implements Comparable<GameBoard>{
         for(int counter = 0; counter < dimension * dimension; counter++){
             unseen.add(counter);
         }
-        
+
         for (int[] row : tiles) {
             for (int tile : row) {
                 if (tile < 0){
@@ -61,7 +66,7 @@ public class GameBoard implements Comparable<GameBoard>{
     public int[][] getTiles(){
         return tiles;
     }
-                                           
+
     public String toString(){
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < dimension; i++) {
@@ -81,8 +86,10 @@ public class GameBoard implements Comparable<GameBoard>{
     public int hamming(){
         /*
          * Your code here
-         * The Hamming distance betweeen a board and the goal board is the number of tiles in the wrong position. 
+         * The Hamming distance betweeen a board and the goal board is the number of tiles in the wrong position.
          */
+
+        return 1;
     }
 
     // sum of Manhattan distances between tiles and goal
@@ -91,18 +98,23 @@ public class GameBoard implements Comparable<GameBoard>{
          * Your code here
          * The Manhattan distance between a board and the goal board is the sum of the Manhattan distances (sum of the vertical and horizontal distance) from the tiles to their goal positions.
          */
+        return 1;
 
         }
     public int manhattanPlusHamming(){
         /*
          * Your code here
          */
+        return 1;
+
     }
 
     public boolean isGoal(){
         /*
          * Your code here
          */
+        return true;
+
     }
 
     @Override
@@ -110,6 +122,8 @@ public class GameBoard implements Comparable<GameBoard>{
         /*
          * Your code here
          */
+        return 1;
+
     }
 
     @Override
@@ -119,7 +133,7 @@ public class GameBoard implements Comparable<GameBoard>{
 
         GameBoard other = (GameBoard) obj;
         if (dimension != other.dimension) return false;
-        
+
         /*
          * Your code here
          */
@@ -129,7 +143,7 @@ public class GameBoard implements Comparable<GameBoard>{
     // all neighboring board states
     public Iterable<GameBoard> neighbors(){
         ArrayList<GameBoard> neighbors = new ArrayList<>();
-        
+
         //Swap the empty square with all of its neighbors
         if(emptySquare.row > 0){
             neighbors.add(swap(tiles[emptySquare.row - 1][emptySquare.col], 0));
