@@ -11,5 +11,7 @@ public class main {
 
         q.quickInsertionSort(unsorted,0, unsorted.length - 1);
         System.out.println(unsorted);
+
+
     }
 }

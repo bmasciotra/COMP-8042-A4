@@ -7,12 +7,13 @@ public class AStar8PuzzleSolver implements EightPuzzleSolver{
         SOLVED, NOT_POSSIBLE, NOT_EXECUTED
     }
 
-    private GameBoard initialBoardState;
-    private GameBoard goalBoardState;
-    BinaryHeap<GameBoardPQEntry> minPQ;
-    private Map<GameBoard, GameBoard> predecessors;
-    private GameBoardPQEntry current;
-    private solvedStatus solved;
+    private GameBoard                            initialBoardState;
+    private GameBoard                            goalBoardState;
+    BinaryHeap<GameBoardPQEntry>                 minPQ;
+    private Map<GameBoard, GameBoard>            predecessors;
+    private GameBoardPQEntry                     current;
+    private solvedStatus                         solved;
+    private Hashtable<GameBoardPQEntry, Boolean> visited;
 
     // You need to decide what data structure to use to store the visited nodes, either a
     // Separate chaining hash table or a quadratic probing hash table.
@@ -20,11 +21,14 @@ public class AStar8PuzzleSolver implements EightPuzzleSolver{
 
     public AStar8PuzzleSolver(GameBoard initial, GameBoard goal){
         this.initialBoardState = initial;
-        this.goalBoardState = goal;
-        minPQ = new BinaryHeap<>();
-        predecessors = new HashMap<>();
-        solved = solvedStatus.NOT_EXECUTED;
-        // visited = new YourChoiceOfHashTable<>();
+        this.goalBoardState    = goal;
+        minPQ                  = new BinaryHeap<>();
+        predecessors           = new HashMap<>();
+        solved                 = solvedStatus.NOT_EXECUTED;
+        visited                = new Hashtable<GameBoardPQEntry,Boolean>();
+
+        // Create GameboardPQEntries for the priority queue
+        var tiles = this.initialBoardState.getTiles();
     }
 
     public void printSolution(){
@@ -50,10 +54,17 @@ public class AStar8PuzzleSolver implements EightPuzzleSolver{
     }
 
     public void solve(){
+       // GameBoardPQEntry priority = minPQ.getMin();
+
+        while(!minPQ.isEmpty()){
+
+        }
+
        /*
        * Your code here
        * Use the exploreNext method to explore the next node in the frontier until the queue is empty
        */
+
     }
 
     //Explore the next node in the frontier according to the priority queue
