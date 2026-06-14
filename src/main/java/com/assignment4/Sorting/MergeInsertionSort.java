@@ -12,7 +12,6 @@ public class MergeInsertionSort<T extends Comparable<T>> {
         mergeCount = 0;
 
         insertMergeSort(arr, 0, arr.length - 1);
-        // update this classes insertCount when the array has been sorted
         insertCount = InsertionSort.insertCount;
     }
 
@@ -20,6 +19,7 @@ public class MergeInsertionSort<T extends Comparable<T>> {
     private void insertMergeSort(T[] arr, int left, int right) {
         if (left < right) {
             int size = right - left + 1;
+
             // Base case for insertion
             if (size < 10) {
                 insertionSorter.insertionSort(arr, left, right);  // sort small chunk
@@ -79,8 +79,5 @@ public class MergeInsertionSort<T extends Comparable<T>> {
             j++;
             k++;
         }
-
     }
-
-
 }
