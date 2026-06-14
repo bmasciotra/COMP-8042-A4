@@ -12,7 +12,7 @@ public class QuickInsertionSort<T extends Comparable<T>> {
 
     public void quickInsertionSort(T[] arr) {
         InsertionSort.insertCount = 0;
-        pivotCount                = 0;
+        pivotCount = 0;
 
         quickInsertionSort(arr, 0, arr.length - 1);
 
@@ -32,18 +32,20 @@ public class QuickInsertionSort<T extends Comparable<T>> {
     //returns the index of the pivot element
     //everything to the left of the pivot is less than the pivot and everything to the right is greater than the pivot
     private int partition(T[] arr, int left, int right) {
-        T pivot = arr[right];
-        int divider = left - 1;
+        T pivot = arr[right]; // last element selected as pivot
 
-        for (int i = left; i < right; i++) {
-            if (arr[i].compareTo(pivot) < 0) {
-                divider++;
-                swap(arr, divider, i);
+        int i =  left - 1;
+
+        for (int j = left; j < right; j++) {
+            T element = arr[j];
+            if (element.compareTo(pivot) <= 0) {
+                i++;
+                swap(arr, i, j);
             }
         }
 
-        swap(arr, divider + 1, right);
-        return divider + 1;
+        swap(arr, i + 1, right);
+        return i + 1;
     }
 
     //helper method
