@@ -5,6 +5,8 @@ import java.util.*;
 public class MergeInsertionSort<T extends Comparable<T>> {
     static int insertCount = 0;
     static int mergeCount = 0;
+    final static int Bounds = 10;
+
     InsertionSort<T> insertionSorter = new InsertionSort<T>();
 
     public void insertMergeSort(T[] arr) {
@@ -21,7 +23,7 @@ public class MergeInsertionSort<T extends Comparable<T>> {
             int size = right - left + 1;
 
             // Base case for insertion
-            if (size < 10) {
+            if (size < Bounds) {
                 insertionSorter.insertionSort(arr, left, right);  // sort small chunk
                 return;
             }

@@ -13,8 +13,9 @@ public class QuickInsertionSort<T extends Comparable<T>> {
     public void quickInsertionSort(T[] arr) {
         InsertionSort.insertCount = 0;
         pivotCount = 0;
-        // Setting the seed for random tests
-        random.setSeed(281);
+
+        // Setting the seed for random tests - can eliminate but this keeps the counters in check -- to have random test pass, uncomment this and the pivot code in partition()
+        // random.setSeed(281);
 
         quickInsertionSort(arr, 0, arr.length - 1);
 
@@ -39,9 +40,11 @@ public class QuickInsertionSort<T extends Comparable<T>> {
     private int partition(T[] arr, int left, int right) {
         pivotCount++;
 
-        int pivotIndex = left + random.nextInt(right - left + 1);
+        // This random pivot satisfies the test condition -- if commenting out, comment the pivot on line 49 out
 
-        swap(arr, pivotIndex, right);
+        // int pivotIndex = left + random.nextInt(right - left + 1);
+        // int pivot = arr[high];
+        // swap(arr, pivotIndex, right);
 
         T pivot = arr[right];
 
